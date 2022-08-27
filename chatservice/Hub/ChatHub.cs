@@ -25,7 +25,7 @@ namespace SignalRChat.Hubs
             {
                 _connections.Remove(Context.ConnectionId);
 
-                Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _automaticMessage, $"{userConnection.User} has left");
+                Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _automaticMessage, $"{userConnection.User} saiu", userConnection.Id);
 
                 SendUsersConnected(userConnection.Room);
             }
@@ -39,7 +39,7 @@ namespace SignalRChat.Hubs
 
             _connections[Context.ConnectionId] = userConnection;
 
-            await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _automaticMessage, $"{userConnection.User} has joined {userConnection.Room}");
+            await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _automaticMessage, $"{userConnection.User} entrou na sala {userConnection.Room}", userConnection.Id);
 
             await SendUsersConnected(userConnection.Room);
         }
@@ -48,7 +48,7 @@ namespace SignalRChat.Hubs
         {
             if (_connections.TryGetValue(Context.ConnectionId, out UserConnection userConnection))
             {
-                await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", userConnection.User, message);
+                await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", userConnection.User, message, userConnection.Id);
             }
         }
 
