@@ -1,4 +1,4 @@
-<h1 align="center"><strong>Criação de mini-chat em grupo para estudos sobre comunicação em tempo real com SignalR</strong></h1>
+<h1 align="center"><strong>Criação de mini-chat para estudos sobre comunicação em tempo real com SignalR</strong></h1>
 
 <hr/>
 
