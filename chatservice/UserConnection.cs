@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace SignalRChat
+﻿namespace SignalRChat
 {
     public class UserConnection
     {
-        public string Id { get; } = Guid.NewGuid().ToString();
+        public string Id { get; set; }
         public string User { get; set; }
         public string Room { get; set; }
     }
